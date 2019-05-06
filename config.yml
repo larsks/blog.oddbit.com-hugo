@@ -8,6 +8,36 @@ pygmentsCodeFences: true
 pygmentsCodefencesGuessSyntax: false
 pygmentsUseClasses: true
 
+outputs:
+  home:
+    - HTML
+    - RSS
+    - Atom
+  taxonomy:
+    - HTML
+    - RSS
+    - Atom
+  taxonomyTerm:
+    - HTML
+    - RSS
+    - Atom
+
+mediaTypes:
+  application/rss+xml:
+    suffixes:
+      - xml
+  application/atom+xml:
+    suffixes:
+      - xml
+
+outputFormats:
+  RSS:
+    mediatype: "application/rss+xml"
+    baseName: "rss"
+  Atom:
+    mediatype: "application/atom+xml"
+    baseName: "atom"
+
 ignorefiles:
   - content/scripts
 

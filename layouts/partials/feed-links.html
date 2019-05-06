@@ -1,0 +1,6 @@
+
+{{ printf "<!-- alternate output formats -->" | safeHTML }}
+<!-- {{ $title := .Title }} -->
+{{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Title | safeHTML }}
+{{ end -}}
