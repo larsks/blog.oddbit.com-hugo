@@ -18,6 +18,7 @@ params:
 
 author:
   name: Lars Kellogg-Stedman
+  profile: /about/lars
 
 permalinks:
   posts: '/post/:year/:month/:title/'
