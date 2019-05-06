@@ -1,7 +1,3 @@
-[submodule "content"]
-	path = content
-	url = gh:larsks/blog.oddbit.com-posts
-	branch = feature/hugo
 [submodule "themes/ghostwriter"]
 	path = themes/ghostwriter
-	url = https://github.com/jbub/ghostwriter
+	url = https://github.com/larsks/ghostwriter
