@@ -6,11 +6,12 @@
     ghp_remote: publish
     ghp_branch: gh-pages
     hugo_env: production
+    hugo_content_directory: content
   tasks:
     - name: get HEAD commit id from content
       command: git rev-parse HEAD
       args:
-        chdir: content
+        chdir: "{{ hugo_content_directory }}"
       register: content
 
     - name: get HEAD commit id from config
@@ -24,7 +25,7 @@
 
     - name: render content
       command: >-
-        hugo -e {{ hugo_env }}
+        hugo -v -e {{ hugo_env }} -c {{ hugo_content_directory }}
 
     - name: create metadata variable
       set_fact:
