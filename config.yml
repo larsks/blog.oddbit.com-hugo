@@ -8,6 +8,10 @@ pygmentsCodeFences: true
 pygmentsCodefencesGuessSyntax: false
 pygmentsUseClasses: true
 
+staticDir:
+  - static
+  - content/static
+
 outputs:
   home:
     - HTML
@@ -40,6 +44,7 @@ outputFormats:
 
 ignorefiles:
   - content/scripts
+  - content/static
 
 params:
   description: One of these things is not like the others
