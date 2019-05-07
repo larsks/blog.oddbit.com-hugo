@@ -50,6 +50,10 @@ params:
   description: One of these things is not like the others
   twitter: 'https://twitter.com/larsks'
   github: 'https://github.com/larsks'
+  stackoverflow: "https://stackoverflow.com/users/147356/larsks"
+  shareFacebook: false
+  showSummary: true
+
 
 author:
   name: Lars Kellogg-Stedman
