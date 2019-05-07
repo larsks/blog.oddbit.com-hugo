@@ -52,6 +52,7 @@ params:
   github: 'https://github.com/larsks'
   stackoverflow: "https://stackoverflow.com/users/147356/larsks"
   shareFacebook: false
+  shareGooglePlus: false
   showSummary: true
 
 
