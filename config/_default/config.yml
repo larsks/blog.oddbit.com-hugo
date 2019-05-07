@@ -8,10 +8,6 @@ pygmentsCodeFences: true
 pygmentsCodefencesGuessSyntax: false
 pygmentsUseClasses: true
 
-staticDir:
-  - static
-  - content/static
-
 outputs:
   home:
     - HTML
