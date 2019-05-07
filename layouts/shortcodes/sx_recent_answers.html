@@ -1,0 +1,13 @@
+{{ $filter := .Get "filter" }}
+{{ $user := .Get "user" }}
+{{ $endpoint := .Get "endpoint" | default "https://api.stackexchange.com/2.2" }}
+{{ $site := .Get "site" | default "stackoverflow" }}
+{{ $count := .Get "count" | default 10 }}
+
+{{ $url := printf "%s/users/%s/answers?site=%s&order=desc&page=1&pagesize=%d&filter=%s" $endpoint $user $site $count $filter }}
+
+{{ $data := getJSON $url }}
+{{ range $data.items }}
+- {{ if .is_accepted }}[<span style="color: green">✓</span>] {{ end }}[{{.title}}]({{.share_link}})
+<!-- ({{ .last_activity_date | int | dateFormat "2006-01-02" }}) -->
+{{ end }}

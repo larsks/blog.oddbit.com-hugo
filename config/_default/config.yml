@@ -71,5 +71,8 @@ menu:
       url: /tags
       weight: 2
     - name: GPG Key
-      url: /about/gpg
-      weight: 2
+      url: /about/gpg/
+      weight: 3
+    - name: Answers
+      url: /about/stackoverflow/
+      weight: 3
