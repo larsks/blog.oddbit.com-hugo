@@ -40,7 +40,7 @@ outputFormats:
 
 ignorefiles:
   - content/scripts
-  - content/static
+  - content/ci
 
 params:
   description: One of these things is not like the others
