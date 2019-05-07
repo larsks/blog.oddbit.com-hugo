@@ -1,5 +1,5 @@
 ---
-baseURL: /
+baseURL: http://blog.oddbit.com/
 languageCode: en-us
 title: The Odd Bit
 theme: ghostwriter
