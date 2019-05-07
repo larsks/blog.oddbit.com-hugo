@@ -1,0 +1,48 @@
+#!/usr/bin/ansible-playbook
+
+---
+- hosts: localhost
+  vars:
+    ghp_remote: publish
+    ghp_branch: gh-pages
+  tasks:
+    - name: get HEAD commit id from content
+      command: git rev-parse HEAD
+      args:
+        chdir: content
+      register: content
+
+    - name: get HEAD commit id from config
+      command: git rev-parse HEAD
+      register: config
+
+    - name: remove old rendered content
+      file:
+        path: public
+        state: absent
+
+    - name: render content
+      command: >-
+        hugo
+
+    - name: create metadata variable
+      set_fact:
+        metadata:
+          content: "{{ content.stdout }}"
+          config: "{{ config.stdout }}"
+          date: "{{ ansible_date_time.iso8601 }}"
+
+    - name: add metadata to published content
+      copy:
+        dest: public/metadata.json
+        content: "{{ metadata|to_nice_json }}"
+
+    - name: publish content to github
+      tags: [publish]
+      command: >-
+        ghp-import -p -n
+        -m "published from content @ {{ content.stdout }}"
+        -r {{ ghp_remote }}
+        -b {{ ghp_branch }}
+        -f
+        public/
