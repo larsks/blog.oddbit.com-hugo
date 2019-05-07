@@ -5,6 +5,7 @@
   vars:
     ghp_remote: publish
     ghp_branch: gh-pages
+    hugo_env: production
   tasks:
     - name: get HEAD commit id from content
       command: git rev-parse HEAD
@@ -23,7 +24,7 @@
 
     - name: render content
       command: >-
-        hugo
+        hugo -e {{ hugo_env }}
 
     - name: create metadata variable
       set_fact:
@@ -46,3 +47,4 @@
         -b {{ ghp_branch }}
         -f
         public/
+      when: hugo_env == "production"
