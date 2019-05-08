@@ -1,2 +1,4 @@
 public
 content/
+themes/*
+resources/_gen/
