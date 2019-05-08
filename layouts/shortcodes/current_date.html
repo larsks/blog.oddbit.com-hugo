@@ -1,0 +1,11 @@
+<!--
+{{ $format := .Get "format" }}
+{{ $utc := .Get "utc" }}
+
+{{ if eq $utc "true" }}
+{{ .Scratch.Set "date" now.UTC }}
+{{ else }}
+{{ .Scratch.Set "date" now }}
+{{ end }}
+-->
+{{ (.Scratch.Get "date").Format $format }}
