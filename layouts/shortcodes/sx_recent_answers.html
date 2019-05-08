@@ -8,6 +8,7 @@
 
 {{ $data := getJSON $url }}
 {{ range $data.items }}
-- {{ if .is_accepted }}[<span style="color: green">✓</span>] {{ end }}[{{.title}}]({{.share_link}})
+- {{ if .is_accepted }}[<span style="color: green">✓</span>] {{ end }}[{{.title}}]({{.link}})
+{{ range .tags }}<span class="sx-tag"><a href="https://stackoverflow.com/questions/tagged/{{.}}">{{ . }}</a></span> {{end}}
 <!-- ({{ .last_activity_date | int | dateFormat "2006-01-02" }}) -->
 {{ end }}
