@@ -3,8 +3,6 @@
 ---
 - hosts: localhost
   vars:
-    ghp_remote: publish
-    ghp_branch: gh-pages
     hugo_env: production
     hugo_content_directory: content
   tasks:
@@ -38,14 +36,3 @@
       copy:
         dest: public/metadata.json
         content: "{{ metadata|to_nice_json }}"
-
-    - name: publish content to github
-      tags: [publish]
-      command: >-
-        ghp-import -p -n
-        -m "published from content @ {{ content.stdout }}"
-        -r {{ ghp_remote }}
-        -b {{ ghp_branch }}
-        -f
-        public/
-      when: hugo_env == "production"

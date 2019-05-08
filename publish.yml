@@ -1,0 +1,17 @@
+#!/usr/bin/ansible-playbook
+
+---
+- hosts: localhost
+  gather_facts: false
+  vars:
+    ghp_remote: publish
+    ghp_branch: gh-pages
+  tasks:
+    - name: publish content to github
+      tags: [publish]
+      command: >-
+        ghp-import -p -n
+        -r {{ ghp_remote }}
+        -b {{ ghp_branch }}
+        -f
+        public/
