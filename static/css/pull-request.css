@@ -1,0 +1,25 @@
+.pull-request::after {
+	padding-left: 1ex;
+	padding-right: 1ex;
+	margin-left: 1ex;
+	margin-right: 1ex;
+	color: black;
+	border: thin solid black;
+	border-radius: 4px;
+	font-size: smaller;
+}
+
+.pull-request-state-open::after {
+	content: "open";
+	background-color: #ffe8aa;
+}
+
+.pull-request-state-closed::after {
+	content: "closed";
+	background-color: #ffb0aa;
+}
+
+.pull-request-state-merged::after {
+	content: "merged";
+	background-color: #c8ffaa;
+}
