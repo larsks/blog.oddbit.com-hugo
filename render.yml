@@ -2,10 +2,18 @@
 
 ---
 - hosts: localhost
+  gather_facts: false
   vars:
     hugo_env: production
     hugo_content_directory: content
   tasks:
+    - name: get current date
+      command: >-
+        date '+%Y-%m-%dT%H:%M:%SZ'
+      environment:
+        TZ: UTC
+      register: date
+
     - name: get HEAD commit id from content
       command: git rev-parse HEAD
       args:
@@ -30,7 +38,7 @@
         metadata:
           content: "{{ content.stdout }}"
           config: "{{ config.stdout }}"
-          date: "{{ ansible_date_time.iso8601 }}"
+          date: "{{ date.stdout }}"
 
     - name: add metadata to published content
       copy:
