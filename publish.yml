@@ -11,6 +11,7 @@
       tags: [publish]
       command: >-
         ghp-import -p -n
+        -m "Publish blog to {{ ghp_remote }}:{{ ghp_branch }}"
         -r {{ ghp_remote }}
         -b {{ ghp_branch }}
         -f
