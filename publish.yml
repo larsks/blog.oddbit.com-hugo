@@ -7,6 +7,10 @@
     ghp_remote: publish
     ghp_branch: gh-pages
   tasks:
+    - name: ensure gh-pages is up to date
+      command: >-
+        git remote update {{ ghp_remote }}
+
     - name: publish content to github
       tags: [publish]
       command: >-
