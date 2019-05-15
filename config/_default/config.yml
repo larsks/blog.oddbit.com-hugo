@@ -58,6 +58,7 @@ author:
 
 permalinks:
   posts: '/post/:year/:month/:title/'
+  tags: '/tag/:slug/'
 
 taxonomies:
   tag: tags
