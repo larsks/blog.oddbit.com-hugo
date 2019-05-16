@@ -24,6 +24,29 @@
       command: git rev-parse HEAD
       register: config
 
+    - name: get list of submodules
+      command: git config --blob HEAD:.gitmodules --list
+      register: submodules_cmd
+
+    - name: parse list of submodules
+      set_fact:
+        submodules: "{{ submodules|default([]) + [item.split('=')[1]] }}"
+      when: "'.path=' in item"
+      loop: "{{ submodules_cmd.stdout_lines }}"
+
+    - name: get submodule commit ids
+      command: git -C {{ item }} rev-parse HEAD
+      loop: "{{ submodules }}"
+      register: commits
+
+    - set_fact:
+        submodule_commits: >-
+          {{ submodule_commits|default({})|
+          combine({item.item: item.stdout}) }}
+      loop: "{{ commits.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+
     - name: remove old rendered content
       file:
         path: public
@@ -36,9 +59,10 @@
     - name: create metadata variable
       set_fact:
         metadata:
+          date: "{{ date.stdout }}"
           content: "{{ content.stdout }}"
           config: "{{ config.stdout }}"
-          date: "{{ date.stdout }}"
+          submodules: "{{ submodule_commits }}"
 
     - name: add metadata to published content
       copy:
