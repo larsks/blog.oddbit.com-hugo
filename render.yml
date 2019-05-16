@@ -12,20 +12,24 @@
         date '+%Y-%m-%dT%H:%M:%SZ'
       environment:
         TZ: UTC
+      changed_when: false
       register: date
 
     - name: get HEAD commit id from content
       command: git rev-parse HEAD
       args:
         chdir: "{{ hugo_content_directory }}"
+      changed_when: false
       register: content
 
     - name: get HEAD commit id from config
       command: git rev-parse HEAD
+      changed_when: false
       register: config
 
     - name: get list of submodules
       command: git config --blob HEAD:.gitmodules --list
+      changed_when: false
       register: submodules_cmd
 
     - name: parse list of submodules
@@ -37,6 +41,7 @@
     - name: get submodule commit ids
       command: git -C {{ item }} rev-parse HEAD
       loop: "{{ submodules }}"
+      changed_when: false
       register: commits
 
     - set_fact:
