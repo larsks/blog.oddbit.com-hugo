@@ -50,6 +50,7 @@ params:
   shareFacebook: false
   shareGooglePlus: false
   showSummary: true
+  showMore: true
 
 
 author:
