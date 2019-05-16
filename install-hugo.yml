@@ -1,0 +1,18 @@
+#!/usr/bin/ansible-playbook
+---
+- hosts: localhost
+  gather_facts: false
+  vars:
+    hugo_version: 0.55.5
+    hugo_bindir: "~/bin"
+  tasks:
+    - name: "download hugo version {{ hugo_version }}"
+      get_url:
+        url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_extended_{{ hugo_version }}_Linux-64bit.tar.gz
+        dest: ./hugo.tar.gz
+
+    - name: "install hugo"
+      command: >-
+        tar -C {{ hugo_bindir }} -xv -f hugo.tar.gz hugo
+      args:
+        creates: "{{ hugo_bindir }}/hugo"
