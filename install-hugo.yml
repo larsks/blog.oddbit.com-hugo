@@ -9,10 +9,19 @@
     - name: "download hugo version {{ hugo_version }}"
       get_url:
         url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_extended_{{ hugo_version }}_Linux-64bit.tar.gz
-        dest: ./hugo.tar.gz
+        dest: ./hugo-{{ hugo_version }}.tar.gz
+        force: false
 
     - name: "install hugo"
       command: >-
-        tar -C {{ hugo_bindir }} -xv -f hugo.tar.gz hugo
+        tar -C {{ hugo_bindir }} -xv -f hugo-{{ hugo_version }}.tar.gz
+        --xform s/hugo/hugo-{{ hugo_version }}/ hugo
       args:
-        creates: "{{ hugo_bindir }}/hugo"
+        creates: "{{ hugo_bindir }}/hugo-{{ hugo_version }}"
+
+    - name: create hugo symlink
+      file:
+        state: link
+        path: "{{ hugo_bindir }}/hugo"
+        src: "{{ hugo_bindir }}/hugo-{{ hugo_version }}"
+        force: true
