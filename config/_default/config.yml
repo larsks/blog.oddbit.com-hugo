@@ -72,9 +72,12 @@ menu:
     - name: Tags
       url: /tags
       weight: 2
+    - name: Archives
+      url: /archives
+      weight: 3
     - name: GPG Key
       url: /about/gpg/
-      weight: 3
+      weight: 4
     - name: Answers
       url: /about/stackoverflow/
-      weight: 3
+      weight: 4
