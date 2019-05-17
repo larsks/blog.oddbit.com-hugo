@@ -4,17 +4,6 @@
 {{ $owner := index $pr_split 0 }}
 {{ $repo := index $pr_split 1 }}
 {{ $pr := index $pr_split 2 }}
-{{ $url := printf "https://api.github.com/repos/%s/%s/pulls/%s" $owner $repo $pr }}
-{{ $data := getJSON $url }}
-{{ $state := $data.state }}
-
-{{ if eq $state "open" }}
-{{ .Scratch.Set "state" "open" }}
-{{ else if (and (eq $state "closed") ($data.merged)) }}
-{{ .Scratch.Set "state" "merged" }}
-{{ else }}
-{{ .Scratch.Set "state" "closed" }}
-{{ end }}
-{{ $class := printf "pull-request-state-%s" (.Scratch.Get "state") }}
+{{ $url := printf "https://github.com/%s/%s/pull/%s" $owner $repo $pr }}
 -->
-<a href="{{ $data.html_url }}" class="pull-request {{ $class }}">#{{$pr}}</a>
+<a href="{{ $url }}" class="pull-request">#{{$pr}}</a>
