@@ -7,8 +7,11 @@
 {{ $url := printf "%s/users/%s/answers?site=%s&order=desc&page=1&pagesize=%d&filter=%s" $endpoint $user $site $count $filter }}
 
 {{ $data := getJSON $url }}
+<ul class="sx-answer-list">
 {{ range $data.items }}
-- {{ if .is_accepted }}[<span style="color: green">✓</span>] {{ end }}[{{.title}}]({{.link}})
-{{ range .tags }}<span class="sx-tag"><a href="https://stackoverflow.com/questions/tagged/{{.}}">{{ . }}</a></span> {{end}}
+{{ $class := cond .is_accepted "sx-answer-accepted" "" }}
+<li><p><a class="sx-answer {{ $class }}" href="{{ .link }}">{{ .title | htmlUnescape }}</a>
+  {{ range .tags }}<a class="sx-tag" href="https://stackoverflow.com/questions/tagged/{{.}}">{{ . }}</a> {{end}}</p></li>
 <!-- ({{ .last_activity_date | int | dateFormat "2006-01-02" }}) -->
 {{ end }}
+</ul>

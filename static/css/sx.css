@@ -5,3 +5,8 @@
 	font-size: small;
 	padding: 3px;
 }
+
+.sx-answer-accepted::before {
+	content: "[✔] ";
+	color: green;
+}
