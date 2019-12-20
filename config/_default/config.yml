@@ -4,6 +4,7 @@ languageCode: en-us
 title: The Odd Bit
 theme: ghostwriter
 enableGitInfo: true
+enableEmoji: true
 pygmentsCodeFences: true
 pygmentsCodefencesGuessSyntax: false
 pygmentsUseClasses: true
