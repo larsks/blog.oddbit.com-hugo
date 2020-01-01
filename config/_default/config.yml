@@ -10,6 +10,11 @@ markup:
   highlight:
     codefences: true
     noClasses: false
+  tableOfContents:
+    endLevel: 3
+    ordered: false
+    startLevel: 1
+
 
 outputs:
   home:
