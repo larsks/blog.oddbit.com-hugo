@@ -1,5 +1,5 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}</title>
+  <title>{{ .Site.Title }}</title>
 
   {{ with .OutputFormats.Get "Atom" }}
   <link rel="self" href="{{ .Permalink }}"/>
@@ -8,7 +8,17 @@
 
   <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
   <id>{{ .Permalink }}</id>
-  {{ range first 15 .Data.Pages }}
+
+{{- $pctx := . -}}
+{{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
+{{- $pages := slice -}}
+{{- if or $.IsHome $.IsSection -}}
+{{- $pages = $pctx.RegularPages -}}
+{{- else -}}
+{{- $pages = $pctx.Pages -}}
+{{- end -}}
+
+  {{ range first 15 $pages }}
   <entry>
     <title>{{ .Title }}</title>
     <author>
