@@ -16,7 +16,7 @@ markup:
   tableOfContents:
     endLevel: 3
     ordered: false
-    startLevel: 1
+    startLevel: 2
 
 
 outputs:
@@ -62,7 +62,6 @@ params:
   shareGooglePlus: false
   showSummary: true
   showMore: true
-
 
 author:
   name: Lars Kellogg-Stedman
