@@ -1,0 +1,4 @@
+{{ $class := .Get 0 }}
+{{ printf "<div class=\"%s\">" $class | safeHTML }}
+{{ .Inner | markdownify }}
+</div>
