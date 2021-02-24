@@ -52,6 +52,7 @@ outputFormats:
 ignorefiles:
   - content/scripts
   - content/ci
+  - '.in.md'
 
 params:
   description: One of these things is not like the others
@@ -68,7 +69,7 @@ author:
   profile: /about/
 
 permalinks:
-  posts: '/post/:year/:month/:title/'
+  post: '/post/:year-:month-:day-:filename/'
   tags: '/tag/:slug/'
   categories: '/category/:slug/'
 
