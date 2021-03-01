@@ -52,7 +52,7 @@ outputFormats:
 ignorefiles:
   - content/scripts
   - content/ci
-  - '.in.md'
+  - "\\.in\\.md$"
 
 params:
   description: One of these things is not like the others
