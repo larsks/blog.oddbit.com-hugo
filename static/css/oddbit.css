@@ -1,3 +1,22 @@
 h2 {
 	border-bottom: thin solid black;
 }
+
+.donate {
+	margin-top: 3ex;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	padding-top: 0.5ex;
+	padding-bottom: 0.5ex;
+	font-size: smaller;
+	text-transform: none;
+	border-top: thin solid black;
+	border-bottom: thin solid black;
+}
+
+@media print {
+	.donate, .site-nav, .utterances-frame {
+		display: none;
+	}
+}
