@@ -20,3 +20,7 @@ h2 {
 		display: none;
 	}
 }
+
+code {
+	color: #505050 !important;
+}
