@@ -3,7 +3,7 @@
 - hosts: localhost
   gather_facts: false
   vars:
-    hugo_version: 0.74.3
+    hugo_version: 0.86.0
     hugo_bindir: "~/bin"
   tasks:
     - name: "download hugo version {{ hugo_version }}"
