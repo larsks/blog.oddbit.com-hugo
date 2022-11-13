@@ -24,3 +24,8 @@ h2 {
 code {
 	color: #505050 !important;
 }
+
+.fa-mastodon:before {
+    content: "🦣";
+}
+

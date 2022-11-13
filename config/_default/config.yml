@@ -57,6 +57,7 @@ ignorefiles:
 params:
   description: One of these things is not like the others
   twitter: 'https://twitter.com/larsks'
+  mastodon: 'https://hachyderm.io/@larsks'
   github: 'https://github.com/larsks'
   stackoverflow: "https://stackoverflow.com/users/147356/larsks"
   shareFacebook: false
